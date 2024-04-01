@@ -4,7 +4,6 @@ const step_count = "";
 const page_id = "";
 const version_id = "";
 const country = null;
-const urlParamsCookies = ["click_id", "utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
 const discountCode = "";
 
 const params = { cc: discountCode };
@@ -22,7 +21,7 @@ const origin = window.location.pathname.replace("/", "").replace("/", "");
 const cookieConfig = "path=/; domain=.buckedup.com;max-age=3600";
 document.cookie = `offer_id=${discountCode};${cookieConfig}`;
 document.cookie = `page_id=${page_id};${cookieConfig}`;
-urlParamsCookies.forEach((param) => {
-  document.cookie = `${param}=${urlParams.get(param)};${cookieConfig}`;
+urlParams.forEach((value, key) => {
+  document.cookie = `${key}=${value};${cookieConfig}`;
 });
 if (isFirstPage) localStorage.setItem("first_page", origin);
